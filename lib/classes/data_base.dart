@@ -98,6 +98,40 @@ class AppDataBase {
           app_appId TEXT
         )
       ''');
+    await db.execute('''
+        CREATE TABLE IF NOT EXISTS appMyCommand (
+          appMyCommandId TEXT,
+          app_appId TEXT,
+          name TEXT,
+          modelName TEXT,
+          modelPath TEXT,
+          samplePath TEXT,
+          desc TEXT,
+          status TEXT,
+          type TEXT,
+          isInUse BOOL,
+          trained BOOL,
+          dateTimeTraining DATETIME,
+          dateTimeCreation DATETIME,
+          lastUpdate DATETIME,
+          sampleCount INT
+          
+          FOREIGN KEY (app_appId) REFERENCES app(appId),
+        )
+      ''');
+    await db.execute('''
+        CREATE TABLE IF NOT EXISTS appMyCommandSample (
+          appMyCommandId TEXT,
+          appMyCommandSampleId TEXT,
+          app_appId TEXT,
+          file<ame TEXT,
+          path TEXT,
+          dateTimeCreation DATETIME,
+
+          FOREIGN KEY (appMyCommandId) REFERENCES appMyCommand(appMyCommandId),
+          FOREIGN KEY (app_appId) REFERENCES app(appId),
+        )
+      ''');
 
     // Create the 'appAlertStatus' table
     await db.execute('''

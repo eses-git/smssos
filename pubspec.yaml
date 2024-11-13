@@ -38,18 +38,23 @@ dependencies:
     git:
       url: https://github.com/eses-git/ed25519_key_pair
   #  path: ../ecc-ppk-management
-  uuid: ^3.0.6
+  uuid: ^4.5.1
   sqflite: ^2.0.0
   sqflite_common_ffi: ^2.0.0
   permission_handler: ^11.3.1
-  speech_to_text: ^7.0.0
-  flutter_sound: ^8.4.0
+  speech_to_text: ^6.6.0
   picovoice_flutter: ^3.0.0
 #  contacts_service: ^0.6.3
   contacts_service: ^0.6.3
   flutter_contacts: ^1.1.9+2  # Add this line
- # google_assistant_caregiver:
- #   path: ../google_assistant_caregiver  # Path to your plugin
+  path_provider: ^2.0.12
+  flutter_sound: ^9.6.0 # or audioplayers: ^0.20.1 for playback only
+  intl: ^0.19.0
+ # assistant_caregiver:
+ #   path: ../assistant_caregiver  # Path to your plugin
+
+  #listener_caregiver:
+  #  path: ../listener_caregiver  # Path to your plugin
 
 
   # The following adds the Cupertino Icons font to your application.

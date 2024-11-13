@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-//import 'package:google_assistant_caregiver/google_assistant_caregiver.dart'; // Import your plugin
 import 'settings.dart';
 import 'personal_data.dart';
 import 'contacts.dart';
+import 'my_commands.dart';  // Import the MyCommandsScreen
 
 class CustomFloatingActionButton extends FloatingActionButton {
   final VoidCallback onPressed;
@@ -50,9 +50,11 @@ class _MainPageState extends State<MainPage> {
               });
 
               if (_isOn) {
-            //    await GoogleAssistantCaregiver.startListening("Hey Assistant");  // Call startListening from plugin
+                // Start listening with the specified command
+                // await ListenerCaregiver.startListening("Hey Assistant");
               } else {
-            //    await GoogleAssistantCaregiver.closeListening();  // Call closeListening from plugin
+                // Stop listening
+                // await ListenerCaregiver.stopListening();
               }
             },
             backgroundColor: _isOn ? Colors.green : Colors.red,  // Green when on, red when off
@@ -95,6 +97,17 @@ class _MainPageState extends State<MainPage> {
             backgroundColor: Colors.orange,
             elevation: 9.0,
             child: Icon(Icons.contacts),
+          ),
+          SizedBox(height: 16),
+
+          // Go to Commands Button
+          CustomFloatingActionButton(
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => MyCommandsScreen()));
+            },
+            backgroundColor: Colors.purple,
+            elevation: 9.0,
+            child: Icon(Icons.list),
           ),
         ],
       ),
