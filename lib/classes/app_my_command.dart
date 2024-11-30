@@ -11,7 +11,7 @@ class AppMyCommand {
   final String? status;
   final String? type;
   final bool? isInUse;
-  final bool? trained;
+   bool? trained;
   final DateTime? dateTimeTraining;
   final DateTime? dateTimeCreation;
   final DateTime? lastUpdate;

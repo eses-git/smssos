@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'settings.dart';
 import 'personal_data.dart';
 import 'contacts.dart';
-import 'my_commands.dart';  // Import the MyCommandsScreen
+import 'my_commands.dart';
+import 'listen.dart'; // Import the ListenScreen
 
 class CustomFloatingActionButton extends FloatingActionButton {
   final VoidCallback onPressed;
@@ -28,7 +29,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  bool _isOn = false;  // Default state is "off"
+  bool _isOn = false; // Default state is "off"
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +47,7 @@ class _MainPageState extends State<MainPage> {
           FloatingActionButton.extended(
             onPressed: () async {
               setState(() {
-                _isOn = !_isOn;  // Toggle the state
+                _isOn = !_isOn; // Toggle the state
               });
 
               if (_isOn) {
@@ -57,11 +58,11 @@ class _MainPageState extends State<MainPage> {
                 // await ListenerCaregiver.stopListening();
               }
             },
-            backgroundColor: _isOn ? Colors.green : Colors.red,  // Green when on, red when off
+            backgroundColor: _isOn ? Colors.green : Colors.red, // Green when on, red when off
             icon: Icon(_isOn ? Icons.power_off : Icons.power),
             label: Text(_isOn ? 'Turn Off' : 'Turn On'),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30),  // Rounded button
+              borderRadius: BorderRadius.circular(30), // Rounded button
             ),
             elevation: 10.0,
           ),
@@ -108,6 +109,17 @@ class _MainPageState extends State<MainPage> {
             backgroundColor: Colors.purple,
             elevation: 9.0,
             child: Icon(Icons.list),
+          ),
+          SizedBox(height: 16),
+
+          // Go to Listen Button
+          CustomFloatingActionButton(
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ListeningScreen()));
+            },
+            backgroundColor: Colors.teal,
+            elevation: 9.0,
+            child: Icon(Icons.mic),
           ),
         ],
       ),

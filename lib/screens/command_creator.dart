@@ -9,6 +9,7 @@ import 'package:uuid/uuid.dart';
 import '../classes/app_my_command.dart';
 import '../classes/app_my_command_sample.dart';
 import '../classes/data_base.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class CommandCreatorScreen extends StatefulWidget {
   @override
@@ -46,7 +47,8 @@ class _CommandCreatorScreenState extends State<CommandCreatorScreen> {
 
   Future<void> _initializeModel() async {
     final prefs = await SharedPreferences.getInstance();
-    final appId = prefs.getString('appId') ?? '';
+    final secureStorage = FlutterSecureStorage();
+    final appId = await secureStorage.read(key: 'appId') ?? '';
     final commandId = Uuid().v4();
     final directory = await getApplicationDocumentsDirectory();
     final modelPath = '${directory.path}/commands/$commandId';

@@ -114,9 +114,8 @@ class AppDataBase {
           dateTimeTraining DATETIME,
           dateTimeCreation DATETIME,
           lastUpdate DATETIME,
-          sampleCount INT
-          
-          FOREIGN KEY (app_appId) REFERENCES app(appId),
+          sampleCount INT,
+          FOREIGN KEY (app_appId) REFERENCES app(appId)
         )
       ''');
     await db.execute('''
@@ -124,12 +123,11 @@ class AppDataBase {
           appMyCommandId TEXT,
           appMyCommandSampleId TEXT,
           app_appId TEXT,
-          file<ame TEXT,
+          fileName TEXT,
           path TEXT,
           dateTimeCreation DATETIME,
-
           FOREIGN KEY (appMyCommandId) REFERENCES appMyCommand(appMyCommandId),
-          FOREIGN KEY (app_appId) REFERENCES app(appId),
+          FOREIGN KEY (app_appId) REFERENCES app(appId)
         )
       ''');
 
